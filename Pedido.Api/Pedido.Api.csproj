@@ -20,8 +20,4 @@
     <ProjectReference Include="..\Pedido.Infrastructure\Pedido.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Dtos\" />
-  </ItemGroup>
-
 </Project>

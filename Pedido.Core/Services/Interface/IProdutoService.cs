@@ -9,5 +9,6 @@ namespace PedidoApi.Core.Services.Interface
         ProdutoDto Inserir(CadastroProdutoDto produtoDto);
         ProdutoDto Alterar(CadastroProdutoDto produtoDto);
         ProdutoDto Remover(int id);
+        void AdicionarProdutos();
     }
 }

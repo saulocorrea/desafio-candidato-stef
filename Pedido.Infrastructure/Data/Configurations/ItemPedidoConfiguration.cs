@@ -29,6 +29,10 @@ namespace PedidoApi.Infrastructure.Data.Configurations
                 .WithMany(e => e.ItensPedido)
                 .HasForeignKey(e => e.IdPedido);
 
+            builder.HasOne(e => e.Produto)
+                .WithMany(e => e.ItensPedido)
+                .HasForeignKey(e => e.IdProduto);
+
             OnConfigurePartial(builder);
         }
 

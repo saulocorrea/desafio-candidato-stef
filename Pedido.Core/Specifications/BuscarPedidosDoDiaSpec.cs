@@ -8,6 +8,7 @@ namespace PedidoApi.Core.Specifications
         public BuscarPedidosDoDiaSpec()
         {
             Query.AsNoTracking();
+            Query.Include(p => p.ItensPedido).ThenInclude(p => p.Produto);
 
             Query.Where(a => a.DataCriacao.Date == DateTime.Today.Date);
         }

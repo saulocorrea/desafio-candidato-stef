@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using PedidoApi.Domain.Entities;
 using PedidoApi.Infrastructure.Data.Configurations;
 
@@ -9,8 +8,10 @@ namespace PedidoApi.Infrastructure.Data
     {
         public DesafioDbContext() { }
 
-        public DesafioDbContext(DbContextOptions<DesafioDbContext> options)
-            : base(options) { }
+        public DesafioDbContext(DbContextOptions<DesafioDbContext> options, IServiceProvider serviceProvider)
+            : base(options)
+        {
+        }
 
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Produto> Produto { get; set; }

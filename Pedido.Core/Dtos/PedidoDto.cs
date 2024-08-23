@@ -26,11 +26,11 @@ namespace PedidoApi.Core.Dtos
                 {
                     Id = i.Id,
                     IdProduto = i.IdProduto,
-                    NomeProduto = i.Produto.NomeProduto,
+                    NomeProduto = i.Produto?.NomeProduto,
                     Quantidade = i.Quantidade,
-                    ValorUnitario = i.Produto.Valor,
+                    ValorUnitario = i.Produto?.Valor ?? 0,
                 }),
-                ValorTotal = pedido.ItensPedido.Sum(x => x.Quantidade * x.Produto.Valor),
+                ValorTotal = pedido.ItensPedido.Sum(x => x.Quantidade * x.Produto?.Valor ?? 0),
             };
         }
     }

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PedidoApi.Core.Dtos;
 using PedidoApi.Core.Services.Interface;
-using PedidoApi.Domain.Entities;
 
 namespace PedidoApi.Controllers
 {
@@ -35,8 +34,9 @@ namespace PedidoApi.Controllers
 
                 return Ok(produtos);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, "Erro ao obter lista de produtos");
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
@@ -59,8 +59,9 @@ namespace PedidoApi.Controllers
 
                 return Ok(produto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, "Erro ao obter produto");
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
@@ -82,8 +83,9 @@ namespace PedidoApi.Controllers
 
                 return CreatedAtAction(nameof(Post), produto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, "Erro ao inserir produto");
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
@@ -106,8 +108,9 @@ namespace PedidoApi.Controllers
 
                 return Ok(produto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, "Erro ao alterar produto");
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
@@ -130,8 +133,9 @@ namespace PedidoApi.Controllers
 
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, "Erro ao excluir produto");
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }

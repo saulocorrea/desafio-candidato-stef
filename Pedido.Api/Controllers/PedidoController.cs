@@ -23,24 +23,123 @@ namespace PedidoApi.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Get()
         {
-            return Ok(new List<PedidoDto>());
+            try
+            {
+                var pedidos = _pedidoService.ObterTodos();
+
+                if (pedidos == null)
+                {
+                    return BadRequest();
+                }
+
+                return Ok(pedidos);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao obter lista de pedidos");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
         [HttpGet]
         [Route("{idPedido}")]
-        [ProducesResponseType(typeof(IEnumerable<PedidoDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(PedidoDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Get([FromRoute] int idPedido)
         {
-            var pedido = _pedidoService.ObterPedidoPorId(idPedido);
-
-            if (pedido == null)
+            try
             {
-                return BadRequest($"Pedido {idPedido} não encontrado");
-            }
+                var pedido = _pedidoService.ObterPorId(idPedido);
 
-            return Ok(pedido);
+                if (pedido == null)
+                {
+                    return BadRequest($"Pedido {idPedido} não encontrado");
+                }
+
+                return Ok(pedido);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao obter pedido");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpPost]
+        [ProducesResponseType(typeof(PedidoDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult Post([FromBody] InserirPedidoDto pedidoDto)
+        {
+            try
+            {
+                var pedido = _pedidoService.Inserir(pedidoDto);
+
+                if (pedido == null)
+                {
+                    return BadRequest();
+                }
+
+                pedido = _pedidoService.ObterPorId(pedido.Id);
+
+                return CreatedAtAction(nameof(Post), pedido);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao inserir produto");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpPut]
+        [Route("{idPedido}")]
+        [ProducesResponseType(typeof(ProdutoDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult Put([FromRoute] int idPedido, [FromBody] AlterarPedidoDto pedidoDto)
+        {
+            try
+            {
+                var pedido = _pedidoService.Alterar(pedidoDto);
+
+                if (pedido == null)
+                {
+                    return BadRequest($"Pedido {idPedido} não encontrado");
+                }
+
+                return Ok(pedido);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao alterar pedido");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpDelete]
+        [Route("{idPedido}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult Delete([FromRoute] int idPedido)
+        {
+            try
+            {
+                var produto = _pedidoService.Remover(idPedido);
+
+                if (produto == null)
+                {
+                    return BadRequest();
+                }
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao excluir produto");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }
