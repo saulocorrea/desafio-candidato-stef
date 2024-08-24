@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Pedido.Infrastructure\Pedido.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\ServiceDependencies\" />
+  </ItemGroup>
+
 </Project>

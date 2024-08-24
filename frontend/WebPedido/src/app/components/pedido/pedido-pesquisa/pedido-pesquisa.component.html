@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Pedidos</h2>
+    <div class="list-group">
+        <div class="list-group-item" *ngFor="let item of pedidos">
+            <div class="d-flex justify-content-between">
+                <span>{{ item.nomeCliente }}</span>
+                <span>{{ item.emailCliente }}</span>
+                <span>{{ item.pago }}</span>
+                <span>{{ item.valorTotal }}</span>
+                <div>
+                    <button class="btn btn-primary btn-sm me-2" [routerLink]="['/pedido', item.id]">Edit</button>
+                    <button class="btn btn-danger btn-sm" (click)="deletar(item.id)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4">
+        <button class="btn btn-success" [routerLink]="['novo']">Novo Pedido</button>
+    </div>
+</div>

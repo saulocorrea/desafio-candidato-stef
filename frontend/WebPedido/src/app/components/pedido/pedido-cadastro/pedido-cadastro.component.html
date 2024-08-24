@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <h2 class="mb-4">{{ id ? 'Edit' : 'Add' }} Item</h2>
+    <form class="needs-validation" novalidate [formGroup]="form">
+        <div class="mb-3">
+            <label for="nomeCliente" class="form-label">Nome Cliente:</label>
+            <input 
+                type="text" 
+                id="nomeCliente" 
+                formControlName="nomeCliente" 
+                name="nomeCliente" 
+                class="form-control" 
+                required>
+            <div class="invalid-feedback">Por favor informe um nome.</div>
+        </div>
+        <div class="mb-3">
+            <label for="emailCliente" class="form-label">Nome Cliente:</label>
+            <input 
+                type="text" 
+                id="emailCliente" 
+                formControlName="emailCliente" 
+                name="emailCliente" 
+                class="form-control" 
+                required>
+            <div class="invalid-feedback">Por favor informe um email.</div>
+        </div>
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="pago" formControlName="pago">
+                <label class="form-check-label" for="pago">
+                    Pago
+                </label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="valorTotal" class="form-label">Valor Total:</label>
+            <input 
+                type="text" 
+                id="valorTotal" 
+                formControlName="valorTotal" 
+                name="valorTotal" 
+                class="form-control" 
+                [disabled]="true">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="salvar()">Salvar</button>
+        <button type="button" class="btn btn-secondary ms-2" [routerLink]="['/pedido']">Cancelar</button>
+    </form>
+    {{pedido | json}}
+</div>
