@@ -7,8 +7,4 @@
     <!-- Folder where production build objects will be placed -->
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\WebPedido\browser\</BuildOutputFolder>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="src\app\NovaPasta\**" />
-    <TypeScriptConfiguration Remove="src\app\NovaPasta\**" />
-  </ItemGroup>
 </Project>
