@@ -1,6 +1,8 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using PedidoApi.Core.Dtos;
 using PedidoApi.Core.Services.Interface;
+using PedidoApi.Core.Validators;
 
 namespace PedidoApi.Controllers
 {
@@ -54,7 +56,7 @@ namespace PedidoApi.Controllers
 
                 if (pedido == null)
                 {
-                    return BadRequest($"Pedido {idPedido} não encontrado");
+                    return NotFound($"Pedido {idPedido} não encontrado");
                 }
 
                 return Ok(pedido);
@@ -74,6 +76,13 @@ namespace PedidoApi.Controllers
         {
             try
             {
+                var result = new InserirPedidoValidator().Validate(pedidoDto);
+
+                if (!result.IsValid)
+                {
+                    return BadRequest(result.Errors);
+                }
+
                 var pedido = _pedidoService.Inserir(pedidoDto);
 
                 if (pedido == null)
@@ -101,12 +110,23 @@ namespace PedidoApi.Controllers
         {
             try
             {
+                pedidoDto.Id = idPedido;
+
+                var result = new AlterarPedidoValidator().Validate(pedidoDto);
+
+                if (!result.IsValid)
+                {
+                    return BadRequest(result.Errors);
+                }
+
                 var pedido = _pedidoService.Alterar(pedidoDto);
 
                 if (pedido == null)
                 {
-                    return BadRequest($"Pedido {idPedido} não encontrado");
+                    return NotFound($"Pedido {idPedido} não encontrado");
                 }
+
+                pedido = _pedidoService.ObterPorId(pedidoDto.Id);
 
                 return Ok(pedido);
             }
@@ -133,7 +153,7 @@ namespace PedidoApi.Controllers
                     return BadRequest();
                 }
 
-                return Ok();
+                return NoContent();
             }
             catch (Exception ex)
             {
@@ -141,5 +161,31 @@ namespace PedidoApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
+
+        [HttpPut]
+        [Route("{idPedido}/setar-pago")]
+        [ProducesResponseType(typeof(ProdutoDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult SetarPago([FromRoute] int idPedido)
+        {
+            try
+            {
+                var alterado = _pedidoService.SetarPedidoPago(idPedido);
+
+                if (!alterado)
+                {
+                    return NotFound($"Pedido {idPedido} não encontrado");
+                }
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao setar pedido como pago");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
     }
 }

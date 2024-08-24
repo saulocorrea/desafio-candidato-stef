@@ -9,5 +9,6 @@ namespace PedidoApi.Core.Services.Interface
         PedidoDto Inserir(InserirPedidoDto pedidoDto);
         PedidoDto Alterar(AlterarPedidoDto pedidoDto);
         PedidoDto Remover(int id);
+        bool SetarPedidoPago(int id);
     }
 }

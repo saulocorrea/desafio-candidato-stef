@@ -9,10 +9,14 @@ namespace PedidoApi.Core.Services
     public class PedidoService : IPedidoService
     {
         private readonly IBaseRepository<Pedido> _pedidoRepository;
+        private readonly IBaseRepository<ItemPedido> _itemPedidoRepository;
 
-        public PedidoService(IBaseRepository<Pedido> pedidoRepository)
+        public PedidoService(
+            IBaseRepository<Pedido> pedidoRepository,
+            IBaseRepository<ItemPedido> itmRepository)
         {
             _pedidoRepository = pedidoRepository;
+            _itemPedidoRepository = itmRepository;
         }
 
         public PedidoDto ObterPorId(int idPedido)
@@ -62,7 +66,8 @@ namespace PedidoApi.Core.Services
 
         public PedidoDto Alterar(AlterarPedidoDto pedidoDto)
         {
-            var pedido = _pedidoRepository.Buscar(pedidoDto.Id);
+            var pedido = _pedidoRepository.BuscarPorSpec(new BuscarPedidoPorIdSpec(pedidoDto.Id))
+                .FirstOrDefault();
 
             if (pedido == null)
             {
@@ -72,6 +77,13 @@ namespace PedidoApi.Core.Services
             pedido.Pago = pedidoDto.Pago;
             pedido.NomeCliente = pedidoDto.NomeCliente;
             pedido.EmailCliente = pedidoDto.EmailCliente;
+
+            pedido.ItensPedido.ToList().ForEach(itm =>
+            {
+                var itmRemover = _itemPedidoRepository.Buscar(itm.Id);
+
+                _itemPedidoRepository.Remover(itmRemover);
+            });
 
             pedido.ItensPedido = pedidoDto.ItensPedido.Select(i => new ItemPedido
             {
@@ -97,6 +109,22 @@ namespace PedidoApi.Core.Services
             _pedidoRepository.Remover(pedido);
 
             return (PedidoDto)pedido;
+        }
+
+        public bool SetarPedidoPago(int id)
+        {
+            var pedido = _pedidoRepository.Buscar(id);
+
+            if (pedido == null)
+            {
+                return false;
+            }
+
+            pedido.Pago = true;
+
+            _pedidoRepository.Alterar(pedido);
+
+            return true;
         }
     }
 }

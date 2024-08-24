@@ -54,7 +54,7 @@ namespace PedidoApi.Controllers
 
                 if (produto == null)
                 {
-                    return BadRequest($"Produto {idProduto} não encontrado");
+                    return NotFound($"Produto {idProduto} não encontrado");
                 }
 
                 return Ok(produto);
@@ -103,7 +103,7 @@ namespace PedidoApi.Controllers
 
                 if (produto == null)
                 {
-                    return BadRequest($"Produto {idProduto} não encontrado");
+                    return NotFound($"Produto {idProduto} não encontrado");
                 }
 
                 return Ok(produto);
@@ -131,7 +131,7 @@ namespace PedidoApi.Controllers
                     return BadRequest();
                 }
 
-                return Ok();
+                return NoContent();
             }
             catch (Exception ex)
             {

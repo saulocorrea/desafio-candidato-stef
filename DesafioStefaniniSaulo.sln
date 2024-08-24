@@ -7,9 +7,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedido.Infrastructure", "Pe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedido.Api", "Pedido.Api\Pedido.Api.csproj", "{777E0692-758D-4EBA-8B36-852155BE01DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedido.Domain", "Pedido.Domain\Pedido.Domain.csproj", "{5A8AE0A6-8F81-4769-8B65-318B409BB00B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedido.Domain", "Pedido.Domain\Pedido.Domain.csproj", "{5A8AE0A6-8F81-4769-8B65-318B409BB00B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pedido.Core", "Pedido.Core\Pedido.Core.csproj", "{B9197303-BD5B-40F8-862F-24F5E515E719}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedido.Core", "Pedido.Core\Pedido.Core.csproj", "{B9197303-BD5B-40F8-862F-24F5E515E719}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{159025C9-F2BC-483B-B7B3-CB8416E44976}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{12F07354-16DD-4C9D-8159-577AF347F6DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{F7E8085F-344F-4FFF-8AFF-0A9E1DAB5FD8}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +45,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1FE6C481-37CC-4285-AC21-8554A47687D3} = {159025C9-F2BC-483B-B7B3-CB8416E44976}
+		{777E0692-758D-4EBA-8B36-852155BE01DC} = {159025C9-F2BC-483B-B7B3-CB8416E44976}
+		{5A8AE0A6-8F81-4769-8B65-318B409BB00B} = {159025C9-F2BC-483B-B7B3-CB8416E44976}
+		{B9197303-BD5B-40F8-862F-24F5E515E719} = {159025C9-F2BC-483B-B7B3-CB8416E44976}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F0816B8D-0CE0-4786-AE63-7BA93F5397C9}
