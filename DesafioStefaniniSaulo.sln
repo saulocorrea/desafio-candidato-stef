@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		README.md = README.md
+		Teste_Pedidos.postman_collection.json = Teste_Pedidos.postman_collection.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedido.Api", "backend\Pedido.Api\Pedido.Api.csproj", "{FA8483AF-CB76-46EE-B0F9-86613A760EAC}"
@@ -25,6 +26,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pedido.Infrastructure", "backend\Pedido.Infrastructure\Pedido.Infrastructure.csproj", "{25FB1C5C-B2F1-47AA-8AD0-C40AF46CC9A3}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "WebPedido", "frontend\WebPedido\WebPedido.esproj", "{02C9C6AD-1E4F-4FF9-A542-000627452015}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PedidoApi.Tests", "backend\PedidoApi.Tests\PedidoApi.Tests.csproj", "{776BE185-B1E5-49BA-A5C1-B2A62C6F7E98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +57,10 @@ Global
 		{02C9C6AD-1E4F-4FF9-A542-000627452015}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02C9C6AD-1E4F-4FF9-A542-000627452015}.Release|Any CPU.Build.0 = Release|Any CPU
 		{02C9C6AD-1E4F-4FF9-A542-000627452015}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{776BE185-B1E5-49BA-A5C1-B2A62C6F7E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{776BE185-B1E5-49BA-A5C1-B2A62C6F7E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{776BE185-B1E5-49BA-A5C1-B2A62C6F7E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{776BE185-B1E5-49BA-A5C1-B2A62C6F7E98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +71,7 @@ Global
 		{8F3EC10E-2299-48AC-9D50-DE8D09725E9A} = {159025C9-F2BC-483B-B7B3-CB8416E44976}
 		{25FB1C5C-B2F1-47AA-8AD0-C40AF46CC9A3} = {159025C9-F2BC-483B-B7B3-CB8416E44976}
 		{02C9C6AD-1E4F-4FF9-A542-000627452015} = {12F07354-16DD-4C9D-8159-577AF347F6DF}
+		{776BE185-B1E5-49BA-A5C1-B2A62C6F7E98} = {159025C9-F2BC-483B-B7B3-CB8416E44976}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F0816B8D-0CE0-4786-AE63-7BA93F5397C9}

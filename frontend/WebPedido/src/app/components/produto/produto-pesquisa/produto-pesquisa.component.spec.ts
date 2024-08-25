@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../../../app-routing.module';
 import { ProdutoPesquisaComponent } from './produto-pesquisa.component';
 
 describe('ProdutoPesquisaComponent', () => {
@@ -8,7 +11,14 @@ describe('ProdutoPesquisaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProdutoPesquisaComponent]
+      declarations: [ProdutoPesquisaComponent],
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule
+      ]
     })
     .compileComponents();
 
