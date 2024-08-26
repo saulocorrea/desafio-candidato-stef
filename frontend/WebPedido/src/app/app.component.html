@@ -1,1 +1,46 @@
-<router-outlet />
+<!-- Begin page -->
+<div id="wrapper">
+  <div class="navbar-custom">
+    <div class="container-fluid">
+      <ul class="list-unstyled topnav-menu float-end mb-0">
+
+        <li class="d-none d-lg-block">
+        </li>
+      </ul>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+
+  <div class="topnav">
+    <div class="container-fluid">
+      <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+
+        <div class="collapse navbar-collapse" id="topnav-menu-content">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i data-feather="home"></i> Cadastros <div class="arrow-down"></div>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="topnav-layout">
+                <a [routerLink]="['pedido']" class="dropdown-item">Pedidos</a>
+                <a [routerLink]="['produto']" class="dropdown-item">Produtos</a>
+              </div>
+            </li>
+          </ul> <!-- end navbar-->
+        </div> <!-- end .collapsed-->
+      </nav>
+    </div> <!-- end container-fluid -->
+  </div>
+</div>
+<div class="content-page">
+
+  <router-outlet />
+
+<div class="clearfix"></div>
+<!-- Footer Start -->
+<footer class="footer">
+</footer>
+<!-- end Footer -->

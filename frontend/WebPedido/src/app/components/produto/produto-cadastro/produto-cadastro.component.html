@@ -1,1 +1,29 @@
-<p>produto-cadastro works!</p>
+<h2 class="mb-4">{{ id ? 'Alterar' : 'Novo' }} Produto</h2>
+<form class="needs-validation" novalidate [formGroup]="form">
+  <div class="mb-3">
+    <label for="nomeProduto" class="form-label">Nome:</label>
+    <input type="text"
+           id="nomeProduto"
+           formControlName="nomeProduto"
+           name="nomeProduto"
+           class="form-control"
+           required>
+    <div class="invalid-feedback">Por favor informe um nome.</div>
+  </div>
+  <div class="mb-3">
+    <label for="valor" class="form-label">Valor:</label>
+    <input type="number"
+           id="valor"
+           formControlName="valor"
+           name="valor"
+           class="form-control"
+           required>
+    <div class="invalid-feedback">Por favor informe um valor.</div>
+  </div>
+
+  <button type="submit"
+          class="btn btn-primary"
+          [disabled]="form.invalid"
+          (click)="salvar()">Salvar</button>
+  <button type="button" class="btn btn-secondary ms-2" [routerLink]="['/produto']">Cancelar</button>
+</form>

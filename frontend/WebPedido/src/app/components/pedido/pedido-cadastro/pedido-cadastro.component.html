@@ -1,4 +1,3 @@
-<div class="container mt-5">
     <h2 class="mb-4">{{ id ? 'Alterar' : 'Novo' }} Pedido</h2>
     <form class="needs-validation" novalidate [formGroup]="form">
         <div class="mb-3">
@@ -45,4 +44,3 @@
         <button type="button" class="btn btn-secondary ms-2" [routerLink]="['/pedido']">Cancelar</button>
     </form>
     {{pedido | json}}
-</div>

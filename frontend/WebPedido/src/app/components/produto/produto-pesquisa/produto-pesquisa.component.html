@@ -1,1 +1,22 @@
-<p>produto-pesquisa works!</p>
+
+<h2 class="mb-4">Produtos</h2>
+<div class="mt-4">
+  <button class="btn btn-success" [routerLink]="['novo']">Novo Produto</button>
+</div>
+
+<div class="list-group mt-2">
+  <div *ngIf="produtos.length == 0">
+    Nenhum produto encontrado
+  </div>
+  <div class="list-group-item" *ngFor="let item of produtos">
+    <div class="d-flex justify-content-between">
+      <span>{{ item.id }}</span>
+      <span>{{ item.nomeProduto }}</span>
+      <span>{{ item.valor }}</span>
+      <div>
+        <button class="btn btn-primary btn-sm me-2" [routerLink]="['/produto', item.id]">Editar</button>
+        <button class="btn btn-danger btn-sm" (click)="deletar(item.id)">Deletar</button>
+      </div>
+    </div>
+  </div>
+</div>
